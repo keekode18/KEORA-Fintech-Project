@@ -8,7 +8,7 @@ KEORA is a full-stack fintech application designed to simulate digital payment a
 
 ---
 
-## ✨ Features
+##  Features
 
 - **User Authentication:** Secure registration and login using JWT and bcrypt password hashing.
 - **Transaction Management:** Create, view and manage financial transactions.
@@ -24,7 +24,7 @@ KEORA is a full-stack fintech application designed to simulate digital payment a
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Layer | Technologies |
 |---|---|
@@ -39,7 +39,7 @@ KEORA is a full-stack fintech application designed to simulate digital payment a
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 KEORA follows a client-server architecture.
 
@@ -61,7 +61,7 @@ KEORA follows a client-server architecture.
 
 ---
 
-## 🔐 Security and Reliability
+## Security and Reliability
 
 KEORA implements several backend safeguards:
 
@@ -76,7 +76,7 @@ KEORA implements several backend safeguards:
 
 ---
 
-## 🧪 Automated Testing
+##  Automated Testing
 
 KEORA includes automated backend API tests using Node.js's built-in test runner.
 
@@ -108,7 +108,7 @@ The backend must be running and connected to the test database.
 
 ---
 
-## ⚙️ Installation and Setup
+##  Installation and Setup
 
 ### 1. Clone the repository
 
@@ -204,7 +204,7 @@ KEORA/
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 - Enhanced transaction security and monitoring.
 - Advanced financial analytics.
