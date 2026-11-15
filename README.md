@@ -214,14 +214,6 @@ KEORA/
 
 ---
 
-## 👩‍💻 Developer
 
-**Developed by:** Keerthi Nagaraj
 
-**GitHub:** [@keekode18](https://github.com/keekode18)
 
----
-
-⭐ If you find this project interesting, consider giving the repository a star!
-
-**KEORA – Your Money. Your Control.**
