@@ -3,6 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 import "./App.css";
 
+const API_BASE_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 
 
 const CATEGORIES = [
@@ -54,7 +57,7 @@ function App() {
       : { full_name: authName.trim(), email: authEmail.trim().toLowerCase(), password: authPassword };
 
     try {
-      const response = await fetch(`http://localhost:5000/api/auth/${endpoint}`, {
+      const response = await fetch(`${API_BASE_URL}/api/auth/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -112,12 +115,11 @@ const [loadError, setLoadError] = useState("");
   async function fetchBalance() {
     try {
       const response = await fetch(
-        "http://localhost:5000/api/transactions/balance",
+        `${API_BASE_URL}/api/transactions/balance`,
         {
          headers: {
   "Content-Type": "application/json",
   Authorization: `Bearer ${token}`,
-  "Idempotency-Key": crypto.randomUUID(),
 },
         }
       );
@@ -148,7 +150,7 @@ const [loadError, setLoadError] = useState("");
 
       setIsLoading(true);
       try {
-        const response = await fetch("http://localhost:5000/api/transactions", {
+        const response = await fetch(`${API_BASE_URL}/api/transactions`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -291,7 +293,7 @@ const [loadError, setLoadError] = useState("");
 
   try {
     const response = await fetch(
-      "http://localhost:5000/api/transactions",
+      `${API_BASE_URL}/api/transactions`,
       {
         method: "POST",
         headers: {
