@@ -1,88 +1,116 @@
-# KEORA – A Fintech Project 
+# KEORA – A Fintech Application
 
-### Finance Reimagined
+**Finance Reimagined...
 
-KEORA is a full-stack fintech application designed to simulate digital payment and transaction management. It provides a secure environment for users to manage transactions, monitor balances and understand their spending through financial analytics.
+KEORA is a full-stack fintech application that simulates digital payments and transaction management. It enables users to manage financial transactions, monitor account balances, analyse spending patterns, and explore payment-system workflows through a responsive web interface.
 
-> **Note:** KEORA is an educational fintech simulation. It does not process real payments or transfer actual money.
+**KEORA is an educational fintech simulation. It does not process real payments or transfer actual money.**
 
----
+## Live Application
 
-##  Features
+- **Live Demo:** https://keora-fintech-project.vercel.app
+- **Backend API:** https://keora-api.onrender.com
+- **Source Code:** https://github.com/keekode18/KEORA-Fintech-Project
 
-- **User Authentication:** Secure registration and login using JWT and bcrypt password hashing.
-- **Transaction Management:** Create, view and manage financial transactions.
-- **Balance Management:** User-specific balance tracking with PostgreSQL.
-- **Payment Simulation:** Simulate income, expenses and transfers.
-- **Idempotency Protection:** Prevent duplicate payment processing using unique idempotency keys.
-- **Transaction Search:** Search transactions by recipient and transaction details.
-- **Category Filtering:** Organise transactions into different categories.
-- **Financial Analytics:** Monitor income, expenses and category-wise spending.
-- **CSV Export:** Download transaction statements.
-- **Responsive Interface:** Designed for different screen sizes.
-- **Accessibility:** Includes large-text and high-contrast options.
+## Key Features
 
----
+### Authentication
+- User registration and login.
+- Password hashing using bcrypt.
+- JWT-based authentication.
+- Protected API endpoints.
 
-##  Tech Stack
+### Transaction Management
+- Simulated income, expenses, and transfers.
+- Transaction history and detailed transaction views.
+- Search and category-based filtering.
+- CSV statement downloads.
+
+### Balance Management
+- Individual user balances.
+- Automatic balance updates for completed transactions.
+- Insufficient balance validation.
+- PostgreSQL-backed transaction records.
+
+### Reliability
+- Idempotency keys to prevent duplicate payment processing.
+- Database transactions for consistent balance updates.
+- Row-level locking for concurrent balance operations.
+- Input validation and parameterised SQL queries.
+
+### Financial Analytics
+- Income and expense summaries.
+- Monthly transaction insights.
+- Category-wise spending breakdown.
+
+### User Experience
+- Responsive interface.
+- Large-text accessibility option.
+- High-contrast accessibility option.
+
+## Technology Stack
 
 | Layer | Technologies |
 |---|---|
 | Frontend | React, JavaScript, HTML, CSS |
+| Build Tool | Vite |
 | Backend | Node.js, Express.js |
 | Database | PostgreSQL |
 | Authentication | JWT, bcrypt |
-| API | REST API |
+| API | REST |
 | Testing | Node.js Test Runner |
 | Code Quality | ESLint |
 | Version Control | Git, GitHub |
+| Frontend Deployment | Vercel |
+| Backend Deployment | Render |
+| Database Hosting | Neon |
 
----
-
-## Architecture
+## System Architecture
 
 KEORA follows a client-server architecture.
 
 ```text
-              KEORA
-                 |
+              User
+               |
+               v
         React Frontend
-                 |
-          REST API Calls
-                 |
-        Node.js + Express
-                 |
-       Authentication Layer
-                 |
-          PostgreSQL
-                 |
-       Users & Transactions
+          (Vercel)
+               |
+               v
+          REST API
+               |
+               v
+       Express Backend
+           (Render)
+               |
+        Authentication
+        & Validation
+               |
+               v
+       PostgreSQL Database
+             (Neon)
 ```
-
----
 
 ## Security and Reliability
 
-KEORA implements several backend safeguards:
+The application implements:
 
-- Password hashing with bcrypt.
+- Bcrypt password hashing.
 - JWT-based authentication.
+- Protected, user-specific transaction access.
 - Parameterised SQL queries.
-- User-specific transaction access.
-- Database transactions for balance updates.
-- Row-level locking to protect against concurrent overspending.
-- Idempotency keys to prevent duplicate payment processing.
-- Input validation for transaction requests.
+- Database transactions for payment operations.
+- Row-level locking during balance updates.
+- Idempotency-key-based duplicate request protection.
+- Transaction input validation.
 
----
+These safeguards are implemented for an educational simulation and should not be interpreted as a production financial security certification.
 
-##  Automated Testing
+## Automated Testing
 
-KEORA includes automated backend API tests using Node.js's built-in test runner.
+The backend includes automated API integration tests using Node.js's built-in test runner.
 
-Current test coverage includes:
-
-| Test | Status |
+| Test Case | Result |
 |---|---|
 | API health check | Passed |
 | Database connectivity | Passed |
@@ -96,9 +124,9 @@ Current test coverage includes:
 | Idempotency conflict handling | Passed |
 | Insufficient balance rejection | Passed |
 
-**Latest test result: 11 passed, 0 failed.**
+**Latest recorded test result: 11 passed, 0 failed.**
 
-Run the tests using:
+Run tests locally:
 
 ```bash
 npm test
@@ -106,77 +134,75 @@ npm test
 
 The backend must be running and connected to the test database.
 
----
+## Local Installation
 
-##  Installation and Setup
+### Prerequisites
+
+- Node.js
+- npm
+- PostgreSQL
 
 ### 1. Clone the repository
 
 ```bash
 git clone https://github.com/keekode18/KEORA-Fintech-Project.git
-```
-
-### 2. Navigate into the project
-
-```bash
 cd KEORA-Fintech-Project
 ```
 
-### 3. Install dependencies
+### 2. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Configure environment variables
+### 3. Configure environment variables
 
 Create a `.env` file inside the `server` directory.
 
-Use `server/.env.example` as your reference.
+Use `server/.env.example` as a reference.
 
-Configure your PostgreSQL credentials and a strong, private JWT secret.
+Configure your PostgreSQL connection details and a strong, private JWT secret. Never commit actual credentials or secrets.
 
-### 5. Set up PostgreSQL
+For local development, configure the frontend API URL only if you need to override its default:
 
-Create a PostgreSQL database named:
-
-```text
-keora
+```env
+VITE_API_URL=http://localhost:5000
 ```
 
-Create the required `users` and `transactions` tables using the project database schema.
+### 4. Set up the database
 
-### 6. Start the backend
+Create a PostgreSQL database named `keora`.
+
+Create the `users` and `transactions` tables using the schema required by the backend.
+
+### 5. Start the backend
 
 ```bash
 node server/server.js
 ```
 
-The API runs at:
+The backend runs at:
 
 ```text
 http://localhost:5000
 ```
 
-### 7. Start the frontend
+### 6. Start the frontend
 
-Open another terminal:
+Open another terminal and run:
 
 ```bash
 npm run dev
 ```
 
-Open the local Vite URL displayed in your terminal.
+Open the local Vite URL displayed in the terminal.
 
----
-
-## 📁 Project Structure
+## Project Structure
 
 ```text
 KEORA/
 │
 ├── public/
-│
 ├── server/
 │   ├── auth.js
 │   ├── db.js
@@ -198,22 +224,30 @@ KEORA/
 ├── .gitignore
 ├── eslint.config.js
 ├── package.json
+├── package-lock.json
 ├── README.md
 └── vite.config.js
 ```
 
----
+## Deployment
 
-##  Future Improvements
+| Component | Platform |
+|---|---|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | Neon PostgreSQL |
 
-- Enhanced transaction security and monitoring.
-- Advanced financial analytics.
-- Improved automated test coverage.
-- Deployment and production infrastructure.
-- Additional payment-system simulations.
+The frontend communicates with the deployed backend through the `VITE_API_URL` environment variable.
 
----
+## Future Enhancements
 
+- Expanded financial analytics.
+- Additional transaction monitoring.
+- More comprehensive automated testing.
+- Enhanced payment-system simulations.
 
+## Author
 
+Developed as a full-stack fintech engineering project to explore authentication, transaction processing, database consistency, API design, and deployment.
 
+**KEORA – Finance, Reimagined.**
