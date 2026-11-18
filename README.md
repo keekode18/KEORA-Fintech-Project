@@ -1,6 +1,6 @@
 # KEORA – A Fintech Application
 
-**Finance Reimagined...
+Finance Reimagined...
 
 KEORA is a full-stack fintech application that simulates digital payments and transaction management. It enables users to manage financial transactions, monitor account balances, analyse spending patterns, and explore payment-system workflows through a responsive web interface.
 
